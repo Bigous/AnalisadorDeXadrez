@@ -1,0 +1,12 @@
+@AnalisadorDeXadrezService_HostAddress = http://localhost:5000
+
+POST {{AnalisadorDeXadrezService_HostAddress}}/api/chess/analyze
+Content-Type: application/json
+
+{
+  "moves": ["e2e4", "e7e5", "g1f3", "b8c6"],
+  "depth": 15
+}
+
+###
+
