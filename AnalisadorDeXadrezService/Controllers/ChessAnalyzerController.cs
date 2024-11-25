@@ -36,9 +36,9 @@ public class ChessAnalyzerController : IController
             List<string> moves = new();
             foreach (var move in analyzeRequest.Moves)
             {
-                var bestMoves = await stockFishService.AnalyzePositionAsync(moves, analyzeRequest.Depth);
+                var bestMoves = await stockFishService.AnalyzePosition(moves, analyzeRequest.Depth);
                 var classification = await stockFishService.ClassifyMove(bestMoves, move, moves, analyzeRequest.Depth);
-                classifications.Add(new MoveClassificationResponse(move, (int)classification));
+                classifications.Add(new MoveClassificationResponse(move, (int)classification.Classification));
                 currentFen += $" {move}"; // Atualiza a FEN com o movimento atual
                 moves.Add(move);
             }

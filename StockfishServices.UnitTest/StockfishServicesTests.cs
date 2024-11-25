@@ -19,16 +19,29 @@ public class StockfishServicesTests
     }
 
     [TestMethod]
-    public async Task AnalysePositionAsync_ShouldReturn5BestMoves()
+    public async Task AnalyzePosition_ShouldReturn5BestMoves()
     {
         // Arrange
-        var stockfishService = new StockfishService();
-        var depth = 18;
+        var depth = 15;
 
         // Act
-        var result = await stockfishService.AnalyzePositionAsync(["e2e4"], depth);
+        var result = await _service.AnalyzePosition(["e2e4"], depth);
 
         // Assert
         Assert.AreEqual(5, result.Count);
+    }
+
+    [TestMethod]
+    public async Task AnalyzeGame_ShouldReturnGameResult()
+    {
+        // Arrange
+
+
+        // Act
+        var result = await _service.AnalyzeGame(_moves01, 15);
+
+        // Assert
+        Assert.IsNotNull(result);
+        Assert.AreEqual(_moves01.Count, result.Moves.Count);
     }
 }
